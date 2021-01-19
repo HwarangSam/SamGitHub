@@ -1,0 +1,61 @@
+import java.util.concurrent.TimeUnit;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class AutomationPracticeTask1 {
+
+	WebDriver driver;
+	
+	@Before
+	public void before() {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+	}
+	
+	@Test
+	public void test() throws InterruptedException {
+		driver.get("http://practice.automationtesting.in/");
+		Thread.sleep(3000);
+		
+		WebElement shop = driver.findElement(By.xpath("//a[text()=\"Shop\"]"));
+		shop.click();
+		Thread.sleep(3000);
+		
+		WebElement home = driver.findElement(By.id("site-logo"));
+		home.click();
+		Thread.sleep(3000);
+		
+		int xpathCount = driver.findElements(By.xpath("//img[@class=\"attachment-shop_catalog size-shop_catalog wp-post-image\"]")).size();
+		
+		if(xpathCount == 3) {
+			System.out.println("There are 3 arrivals");
+		}else {
+			System.out.println("Arrival Count Error");
+		}
+	
+	//click on new arrivals and lead to add to basket page
+		Thread.sleep(3000);
+		WebElement rubySlide = driver.findElement(By.xpath("//img[@title=\"Selenium Ruby\"]"));
+		rubySlide.click();
+		Thread.sleep(3000);
+		WebElement basket = driver.findElement(By.xpath("//button[@type=\"submit\"]"));
+		
+		if(basket.isDisplayed() == true);{
+			System.out.println("Item can be added to basket");
+		}
+	}
+	@After
+	public void after() {
+		driver.close();
+	}
+}
