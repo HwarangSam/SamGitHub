@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -12,11 +11,9 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import com.hrms.pages.LoginPageElements;
 import com.hrms.testBase.Driver;
 import com.hrms.utils.ConfigsReader;
-
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class writeExcelTask {
@@ -57,9 +54,5 @@ public class writeExcelTask {
 		loginPage.lastName.sendKeys(lastNameEntry);
 		loginPage.saveBtn.click();
 
-//		loginPage.username.sendKeys(userName);
-//		Thread.sleep(1000);
-//		loginPage.password.sendKeys(passWord);
-//		loginPage.loginBtn.click();
 	}
 }
